@@ -38,16 +38,18 @@
                         <!-- [ Main Content ] start -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5>Survei keluhan gangguan otot rangka</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5>Informasi Pekerjaan</h5>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <form role="form" method="post" action="/snisub">
+                                <form role="form" method="post" action="/gotrak/lihat">
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Survei keluhan gangguan otot rangka</h5>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <h5>Informasi Pekerjaan</h5>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Perusahaan</label>
                                                         <input type="text" class="form-control" name="perusahaan"
@@ -58,378 +60,1127 @@
                                                         <input type="text" class="form-control" name="nama" id="nama"
                                                             placeholder="Nama (opsional)">
                                                     </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+                                                    <div class="form-group">
+                                                        <label>Posisi/jabatan</label>
+                                                        <input type="text" class="form-control" name="posisi"
+                                                            id="posisi" placeholder="Posisi/jabatan (optional)">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Email</label>
+                                                        <input type="text" class="form-control" name="email" id="email"
+                                                            {% if current_user.email %} readonly
+                                                            value="{{ current_user.email }}" {% endif %}>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
                                             </div>
-                                            <div class="col-md-6">
-
-                                                <div class="form-group">
-                                                    <label>Posisi/jabatan</label>
-                                                    <input type="text" class="form-control" name="posisi" id="posisi"
-                                                        placeholder="Posisi/jabatan (optional)">
+                                            <h5 class="mt-5">Tugas dan Waktu</h5>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Tugas</label>
+                                                    <input class="mb-3 form-control" type="text" name="tugas1"
+                                                        id="tugas1" placeholder="Tugas 1">
+                                                    <input class="mb-3 form-control" type="text" name="tugas2"
+                                                        id="tugas2" placeholder="Tugas 2">
+                                                    <input class="mb-3 form-control" type="text" name="tugas3"
+                                                        id="tugas3" placeholder="Tugas 3">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="text" class="form-control" name="email" id="email" {%
-                                                        if current_user.email %} readonly
-                                                        value="{{ current_user.email }}" {% endif %}>
-                                                </div>
-                                            </div>
-
-
-
-
-
-
-                                        </div>
-                                        <h5 class="mt-5">Tugas dan Waktu</h5>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Tugas</label>
-                                                <input class="mb-3 form-control" type="text" placeholder="Tugas 1">
-                                                <input class="mb-3 form-control" type="text" placeholder="Tugas 2">
-                                                <input class="mb-3 form-control" type="text" placeholder="Tugas 3">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Waktu</label>
-                                                <input class="mb-3 form-control" type="number" placeholder="Waktu 1">
-                                                <input class="mb-3 form-control" type="number" placeholder="Waktu 2">
-                                                <input class="mb-3 form-control" type="number" placeholder="Waktu 3">
-                                            </div>
-                                        </div>
-                                        <h5 class="mt-5">6. Manakah yang merupakan tangan dominan Anda?</h5>
-                                        <hr>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="kanan">
-                                            <label class="custom-control-label" for="kanan">Kanan</label>
-                                        </div>
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="kiri">
-                                            <label class="custom-control-label" for="kiri">Kiri</label>
-                                        </div>
-                                        <h5 class="mt-5">7. Sudah berapa lama Anda bekerja pada posisi/jabatan saat ini?
-                                        </h5>
-                                        <hr>
-                                        <div class="form-group">
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option value="" selected disabled>Pilih berikut</option>
-                                                <option value="3bulan">Kurang dari 3 bulan</option>
-                                                <option value="1tahun">3 bulan - 1 tahun</option>
-                                                <option value="5tahun">1-5 tahun</option>
-                                                <option value="10tahun">5-10 tahun</option>
-                                                <option value="10tahun">Lebih dari 10 tahun</option>
-                                            </select>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-
-                                                <h5 class="mt-5">8. Seberapa sering Anda merasakan kelelahan mental
-                                                    setelah
-                                                    bekerja?</h5>
-                                                <hr>
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="tidak" name="mental"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="tidak">Tidak pernah</label>
-                                                </div>
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="kadang" name="mental"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label"
-                                                        for="kadang">Kadang-kadang</label>
-                                                </div>
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="sering" name="mental"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="sering">Sering</label>
-                                                </div>
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="selalu" name="mental"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="selalu">Selalu</label>
+                                                <div class="col-md-6">
+                                                    <label>Waktu</label>
+                                                    <input class="mb-3 form-control" type="number" name="waktu1"
+                                                        id="waktu1" placeholder="Waktu 1">
+                                                    <input class="mb-3 form-control" type="number" name="waktu2"
+                                                        id="waktu2" placeholder="Waktu 2">
+                                                    <input class="mb-3 form-control" type="number" name="waktu3"
+                                                        id="waktu3" placeholder="Waktu 3">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <h5 class="mt-5">9. Seberapa sering Anda merasakan kelelahan fisik
-                                                    setelah
-                                                    bekerja?</h5>
-                                                <hr>
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="tidak" name="fisik"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="tidak">Tidak pernah</label>
-                                                </div>
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="kadang" name="fisik"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label"
-                                                        for="kadang">Kadang-kadang</label>
-                                                </div>
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="sering" name="fisik"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="sering">Sering</label>
-                                                </div>
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="selalu" name="fisik"
-                                                        class="custom-control-input">
-                                                    <label class="custom-control-label" for="selalu">Selalu</label>
-                                                </div>
+
+
+                                            <h5 class="mt-5">6. Manakah yang merupakan tangan dominan Anda?</h5>
+                                            <hr>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="kanan"
+                                                    name="tgn" value="kanan">
+                                                <label class="custom-control-label" for="kanan">Kanan</label>
                                             </div>
-                                        </div>
-
-
-                                        <h5 class="mt-5">10. Pernahkan Anda mengalami rasa sakit/nyeri atau
-                                            ketidaknyaman
-                                            yang Anda anggap berhubungan dengan pekerjaan dalam satu tahun terakhir?
-                                        </h5>
-                                        <hr>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="ya" name="sakit" class="custom-control-input">
-                                            <label class="custom-control-label" for="ya">Ya</label>
-                                        </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="tidakpernah" name="sakit"
-                                                class="custom-control-input">
-                                            <label class="custom-control-label" for="tidakpernah">Tidak</label>
-                                        </div>
-
-                                        <h5 class="mt-5">Jika jawaban No. 10 adalah Ya, silahkan isi survei berikut
-                                        </h5>
-                                        <hr>
-                                        <label>
-                                            <ul>Untuk setiap bagian tubuh mohon jelaskan
-                                                <li> Pertanyaan "seberapa sering" yang dimaksud adalah seberapa sering
-                                                    Anda
-                                                    merasakan ketidaknyaman pada bagian tubuh tersebut.
-                                                </li>
-                                                <li> Pertanyaan "seberapa parah" yang dimaksud adalah tingkat
-                                                    ketidaknyaman
-                                                    dan
-                                                    apakah rasa sakit itu menganggu kemampuan Anda untuk melakukan
-                                                    pekerjaan
-                                                    Anda.
-                                                </li>
-                                                <hr>
-                                                <li> Catatan: "sakit" dapat berupa nyeri, kaku, mati rasa, kesemutan,
-                                                    atau
-                                                    rasa
-                                                    terbakar.
-                                                </li>
-                                            </ul>
-
-                                        </label>
-
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <h5 class="mt-5">Gambar bantuan</h5>
-                                                <hr>
-                                                <img src="{{ config.ASSETS_ROOT }}/images/fix.jpg" class="img-fluid"
-                                                    alt="gotrak">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="kiri"
+                                                    name="tgn2" value="kiri">
+                                                <label class="custom-control-label" for="kiri">Kiri</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <h5 class="mt-5">7. Sudah berapa lama Anda bekerja pada posisi/jabatan saat
+                                                ini?
+                                            </h5>
+                                            <hr>
+                                            <div class="form-group">
+                                                <select class="form-control" id="exampleFormControlSelect1" name="lama">
+                                                    <option value="" selected disabled>Pilih berikut</option>
+                                                    <option value="3 bulan">Kurang dari 3 bulan</option>
+                                                    <option value="1 tahun">3 bulan - 1 tahun</option>
+                                                    <option value="5 tahun">1-5 tahun</option>
+                                                    <option value="10 tahun">5-10 tahun</option>
+                                                    <option value="10 tahun">Lebih dari 10 tahun</option>
+                                                </select>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
 
-                                                <h5 class="mt-5">Pilih bagian tubuh yang sakit</h5>
-                                                <hr>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="leher"
-                                                        onclick="bagian1()">
-                                                    <label class="custom-control-label" for="leher">Leher</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="bahu"
-                                                        onclick="bagian2()">
-                                                    <label class="custom-control-label" for="bahu">Bahu</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="pa"
-                                                        onclick="bagian3()">
-                                                    <label class="custom-control-label" for="pa">Punggung Atas</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="siku"
-                                                        onclick="bagian4()">
-                                                    <label class="custom-control-label" for="siku">Siku</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="pb"
-                                                        onclick="bagian5()">
-                                                    <label class="custom-control-label" for="pb">Punggung Bawah</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="lengan"
-                                                        onclick="bagian6()">
-                                                    <label class="custom-control-label" for="lengan">Lengan</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="tangan"
-                                                        onclick="bagian7()">
-                                                    <label class="custom-control-label" for="tangan">Tangan</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="pinggul"
-                                                        onclick="bagian8()">
-                                                    <label class="custom-control-label" for="pinggul">Pinggul</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="paha"
-                                                        onclick="bagian9()">
-                                                    <label class="custom-control-label" for="paha">Paha</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="lutut"
-                                                        onclick="bagian10()">
-                                                    <label class="custom-control-label" for="lutut">Lutut</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="betis"
-                                                        onclick="bagian11()">
-                                                    <label class="custom-control-label" for="betis">Betis</label>
-                                                </div>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="kaki"
-                                                        onclick="bagian12()">
-                                                    <label class="custom-control-label" for="kaki">Kaki</label>
-                                                </div>
-
-                                                <div id="output1" style="display: none;">
-                                                    <h5 class="mt-5">Seberapa sering pada Leher?</h5>
+                                                    <h5 class="mt-5">8. Seberapa sering Anda merasakan kelelahan mental
+                                                        setelah
+                                                        bekerja?</h5>
                                                     <hr>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="tidakleher" name="seringleher"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="tidakleher">Tidak
+                                                        <input type="radio" id="tidak" name="mental"
+                                                            class="custom-control-input" value="tidak">
+                                                        <label class="custom-control-label" for="tidak">Tidak
                                                             pernah</label>
                                                     </div>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="kadangleher" name="seringleher"
-                                                            class="custom-control-input">
+                                                        <input type="radio" id="kadang" name="mental"
+                                                            class="custom-control-input" value="kadang">
                                                         <label class="custom-control-label"
-                                                            for="kadangleher">Kadang-kadang</label>
+                                                            for="kadang">Kadang-kadang</label>
                                                     </div>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="seringleher" name="seringleher"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label"
-                                                            for="seringleher">Sering</label>
+                                                        <input type="radio" id="sering" name="mental"
+                                                            class="custom-control-input" value="sering">
+                                                        <label class="custom-control-label" for="sering">Sering</label>
                                                     </div>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="selaluleher" name="seringleher"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label"
-                                                            for="selaluleher">Selalu</label>
-                                                    </div>
-
-
-                                                    <h5 class="mt-5">Seberapa parah pada Leher?</h5>
-                                                    <hr>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="tidakadaleher" name="leher"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="tidakadaleher">Tidak
-                                                            ada
-                                                            masalah</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="tidaknyamanleher" name="leher"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="tidaknyamanleher">Tidak
-                                                            nyaman</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="sakitleher" name="leher"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label"
-                                                            for="sakitleher">Sakit</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="sakitparahleher" name="leher"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="sakitparahleher">Sakit
-                                                            parah</label>
+                                                        <input type="radio" id="selalu" name="mental"
+                                                            class="custom-control-input" value="selalu">
+                                                        <label class="custom-control-label" for="selalu">Selalu</label>
                                                     </div>
                                                 </div>
-
-                                                <div id="output2" style="display: none;">
-                                                    <h5 class="mt-5">Seberapa sering pada Bahu?</h5>
+                                                <div class="col-md-6">
+                                                    <h5 class="mt-5">9. Seberapa sering Anda merasakan kelelahan fisik
+                                                        setelah
+                                                        bekerja?</h5>
                                                     <hr>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="tidakbahu" name="seringbahu"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="tidakbahu">Tidak
+                                                        <input type="radio" id="tidakf" name="fisik"
+                                                            class="custom-control-input" value="tidak">
+                                                        <label class="custom-control-label" for="tidakf">Tidak
                                                             pernah</label>
                                                     </div>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="kadangbahu" name="seringbahu"
-                                                            class="custom-control-input">
+                                                        <input type="radio" id="kadangf" name="fisik"
+                                                            class="custom-control-input" value="kadang">
                                                         <label class="custom-control-label"
-                                                            for="kadangbahu">Kadang-kadang</label>
+                                                            for="kadangf">Kadang-kadang</label>
                                                     </div>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="seringbahu" name="seringbahu"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label"
-                                                            for="seringbahu">Sering</label>
+                                                        <input type="radio" id="seringf" name="fisik"
+                                                            class="custom-control-input" value="sering">
+                                                        <label class="custom-control-label" for="seringf">Sering</label>
                                                     </div>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="selalubahu" name="seringbahu"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label"
-                                                            for="selalubahu">Selalu</label>
-                                                    </div>
-
-                                                    <h5 class="mt-5">Seberapa parah pada Bahu?</h5>
-                                                    <hr>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="tidakadabahu" name="bahu"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="tidakadabahu">Tidak ada
-                                                            masalah</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="tidaknyamanbahu" name="bahu"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="tidaknyamanbahu">Tidak
-                                                            nyaman</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="sakitbahu" name="bahu"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label"
-                                                            for="sakitbahu">Sakit</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" id="sakitparahbahu" name="bahu"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="sakitparahbahu">Sakit
-                                                            parah</label>
+                                                        <input type="radio" id="selaluf" name="fisik"
+                                                            class="custom-control-input" value="selalu">
+                                                        <label class="custom-control-label" for="selaluf">Selalu</label>
                                                     </div>
                                                 </div>
-
-
-
-
                                             </div>
+
+
+                                            <h5 class="mt-5">10. Pernahkan Anda mengalami rasa sakit/nyeri atau
+                                                ketidaknyaman
+                                                yang Anda anggap berhubungan dengan pekerjaan dalam satu tahun terakhir?
+                                            </h5>
+                                            <hr>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="ya" name="sakit" class="custom-control-input"
+                                                    value="ya">
+                                                <label class="custom-control-label" for="ya">Ya</label>
+                                            </div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="tidakpernah" name="sakit"
+                                                    class="custom-control-input" value="tidak">
+                                                <label class="custom-control-label" for="tidakpernah">Tidak</label>
+                                            </div>
+
+                                            <h5 class="mt-5">Jika jawaban No. 10 adalah Ya, silahkan isi survei berikut
+                                            </h5>
+                                            <hr>
+                                            <label>
+                                                <ul>Untuk setiap bagian tubuh mohon jelaskan
+                                                    <li> Pertanyaan "seberapa sering" yang dimaksud adalah seberapa
+                                                        sering
+                                                        Anda
+                                                        merasakan ketidaknyaman pada bagian tubuh tersebut.
+                                                    </li>
+                                                    <li> Pertanyaan "seberapa parah" yang dimaksud adalah tingkat
+                                                        ketidaknyaman
+                                                        dan
+                                                        apakah rasa sakit itu menganggu kemampuan Anda untuk melakukan
+                                                        pekerjaan
+                                                        Anda.
+                                                    </li>
+                                                    <hr>
+                                                    <li> Catatan: "sakit" dapat berupa nyeri, kaku, mati rasa,
+                                                        kesemutan,
+                                                        atau
+                                                        rasa
+                                                        terbakar.
+                                                    </li>
+                                                </ul>
+
+                                            </label>
+
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h5 class="mt-5">Gambar bantuan</h5>
+                                                    <hr>
+                                                    <img src="{{ config.ASSETS_ROOT }}/images/fix.jpg" class="img-fluid"
+                                                        alt="gotrak">
+                                                </div>
+                                                <div class="col-md-6">
+
+                                                    <h5 class="mt-5">Pilih bagian tubuh yang sakit</h5>
+                                                    <hr>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="leher"
+                                                            name="pilih1" value="leher" onclick="bagian1()">
+                                                        <label class="custom-control-label" for="leher">Leher</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="bahu"
+                                                            name="pilih2" value="bahu" onclick="bagian2()">
+                                                        <label class="custom-control-label" for="bahu">Bahu</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="pa"
+                                                            name="pilih3" value="punggung atas" onclick="bagian3()">
+                                                        <label class="custom-control-label" for="pa">Punggung
+                                                            Atas</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="siku"
+                                                            name="pilih4" value="siku" onclick="bagian4()">
+                                                        <label class="custom-control-label" for="siku">Siku</label>
+                                                    </div>
+
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="pb"
+                                                            name="pilih5" value="punggung bawah" onclick="bagian5()">
+                                                        <label class="custom-control-label" for="pb">Punggung
+                                                            Bawah</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="lengan"
+                                                            name="pilih6" value="lengan" onclick="bagian6()">
+                                                        <label class="custom-control-label" for="lengan">Lengan</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="tangan"
+                                                            name="pilih7" value="tangan" onclick="bagian7()">
+                                                        <label class="custom-control-label" for="tangan">Tangan</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="pinggul"
+                                                            name="pilih8" value="pinggul" onclick="bagian8()">
+                                                        <label class="custom-control-label"
+                                                            for="pinggul">Pinggul</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="paha"
+                                                            name="pilih9" value="paha" onclick="bagian9()">
+                                                        <label class="custom-control-label" for="paha">Paha</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="lutut"
+                                                            name="pilih10" value="lutut" onclick="bagian10()">
+                                                        <label class="custom-control-label" for="lutut">Lutut</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="betis"
+                                                            name="pilih11" value="betis" onclick="bagian11()">
+                                                        <label class="custom-control-label" for="betis">Betis</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="kaki"
+                                                            name="pilih12" value="kaki" onclick="bagian12()">
+                                                        <label class="custom-control-label" for="kaki">Kaki</label>
+                                                    </div>
+
+                                                    <div id="output1" style="display: none;">
+                                                        <h5 class="mt-5">Leher</h5>
+                                                        <hr>
+                                                        <h6>Seberapa sering pada leher?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakleher" name="seringleher"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakleher">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadangleher" name="seringleher"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadangleher">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringleher" name="seringleher"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringleher">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selaluleher" name="seringleher"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selaluleher">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada leher?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadaleher" name="leher"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidakadaleher">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamanleher" name="leher"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamanleher">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitleher" name="leher"
+                                                                value="sakit" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitleher">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahleher" name="leher"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitparahleher">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="output2" style="display: none;">
+                                                        <h5 class="mt-5">Bahu</h5>
+                                                        <hr>
+                                                        <h6>Bagian</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="bahukanan" name="bagianbahu"
+                                                                class="custom-control-input" value="kanan">
+                                                            <label class="custom-control-label"
+                                                                for="bahukanan">Kanan</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="bahukiri" name="bagianbahu"
+                                                                class="custom-control-input" value="kiri">
+                                                            <label class="custom-control-label"
+                                                                for="bahukiri">Kiri</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa sering pada bahu?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakbahu" name="seringbahu"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakbahu">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadangbahu" name="seringbahu"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadangbahu">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringbahu" name="seringbahu"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringbahu">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalubahu" name="seringbahu"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalubahu">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada bahu?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadabahu" name="bahu"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakadabahu">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamanbahu" name="bahu"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamanbahu">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitbahu" name="bahu" value="sakit"
+                                                                class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitbahu">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahbahu" name="bahu"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitparahbahu">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="output3" style="display: none;">
+                                                        <h5 class="mt-5">Punggung atas</h5>
+                                                        <hr>
+                                                        <h6>Seberapa sering pada punggung atas?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakpa" name="seringpa"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakpa">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadangpa" name="seringpa"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadangpa">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringpa" name="seringpa"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringpa">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalupa" name="seringpa"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalupa">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada punggung atas?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadapa" name="pa"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakadapa">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamanpa" name="pa"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamanpa">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitpa" name="pa" value="sakit"
+                                                                class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitpa">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahpa" name="pa"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="sakitparahpa">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="output4" style="display: none;">
+                                                        <h5 class="mt-5">Siku</h5>
+                                                        <hr>
+                                                        <h6>Bagian</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sikukanan" name="bagiansiku"
+                                                                class="custom-control-input" value="kanan">
+                                                            <label class="custom-control-label"
+                                                                for="sikukanan">Kanan</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sikukiri" name="bagiansiku"
+                                                                class="custom-control-input" value="kiri">
+                                                            <label class="custom-control-label"
+                                                                for="sikukiri">Kiri</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa sering pada siku?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaksiku" name="seringsiku"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidaksiku">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadangsiku" name="seringsiku"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadangsiku">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringsiku" name="seringsiku"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringsiku">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalusiku" name="seringsiku"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalusiku">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada siku?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadasiku" name="siku"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakadasiku">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamansiku" name="siku"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamansiku">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitsiku" name="siku" value="sakit"
+                                                                class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitsiku">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahsiku" name="siku"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitparahsiku">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="output5" style="display: none;">
+                                                        <h5 class="mt-5">Punggung bawah</h5>
+                                                        <hr>
+                                                        <h6>Seberapa sering pada punggung bawah?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakpb" name="seringpb"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakpb">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadangpb" name="seringpb"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadangpb">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringpb" name="seringpb"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringpb">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalupb" name="seringpb"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalupb">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada punggung bawah?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadapb" name="pb"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakadapb">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamanpb" name="pb"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamanpb">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitpb" name="pb" value="sakit"
+                                                                class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitpb">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahpb" name="pb"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="sakitparahpb">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="output6" style="display: none;">
+                                                        <h5 class="mt-5">Lengan</h5>
+                                                        <hr>
+                                                        <h6>Bagian</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="lengankanan" name="bagianlengan"
+                                                                class="custom-control-input" value="kanan">
+                                                            <label class="custom-control-label"
+                                                                for="lengankanan">Kanan</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="lengankiri" name="bagianlengan"
+                                                                class="custom-control-input" value="kiri">
+                                                            <label class="custom-control-label"
+                                                                for="lengankiri">Kiri</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa sering pada lengan?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaklengan" name="seringlengan"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidaklengan">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadanglengan" name="seringlengan"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadanglengan">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringlengan" name="seringlengan"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringlengan">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalulengan" name="seringlengan"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalulengan">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada lengan?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadalengan" name="lengan"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidakadalengan">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamanlengan" name="lengan"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamanlengan">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitlengan" name="lengan"
+                                                                value="sakit" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitlengan">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahlengan" name="lengan"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitparahlengan">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="output7" style="display: none;">
+                                                        <h5 class="mt-5">Tangan</h5>
+                                                        <hr>
+                                                        <h6>Bagian</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tangankanan" name="bagiantangan"
+                                                                class="custom-control-input" value="kanan">
+                                                            <label class="custom-control-label"
+                                                                for="tangankanan">Kanan</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tangankiri" name="bagiantangan"
+                                                                class="custom-control-input" value="kiri">
+                                                            <label class="custom-control-label"
+                                                                for="tangankiri">Kiri</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa sering pada tangan?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaktangan" name="seringtangan"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidaktangan">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadangtangan" name="seringtangan"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadangtangan">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringtangan" name="seringtangan"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringtangan">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalutangan" name="seringtangan"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalutangan">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada tangan?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadatangan" name="tangan"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidakadatangan">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamantangan" name="tangan"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamantangan">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakittangan" name="tangan"
+                                                                value="sakit" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakittangan">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahtangan" name="tangan"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitparahtangan">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="output8" style="display: none;">
+                                                        <h5 class="mt-5">Pinggul</h5>
+                                                        <hr>
+                                                        <h6>Bagian</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="pinggulkanan" name="bagianpinggul"
+                                                                class="custom-control-input" value="kanan">
+                                                            <label class="custom-control-label"
+                                                                for="pinggulkanan">Kanan</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="pinggulkiri" name="bagianpinggul"
+                                                                class="custom-control-input" value="kiri">
+                                                            <label class="custom-control-label"
+                                                                for="pinggulkiri">Kiri</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa sering pada pinggul?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakpinggul" name="seringpinggul"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakpinggul">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadangpinggul" name="seringpinggul"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadangpinggul">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringpinggul" name="seringpinggul"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringpinggul">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalupinggul" name="seringpinggul"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalupinggul">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada pinggul?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadapinggul" name="pinggul"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidakadapinggul">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamanpinggul" name="pinggul"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamanpinggul">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitpinggul" name="pinggul"
+                                                                value="sakit" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitpinggul">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahpinggul" name="pinggul"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitparahpinggul">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="output9" style="display: none;">
+                                                        <h5 class="mt-5">Paha</h5>
+                                                        <hr>
+                                                        <h6>Bagian</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="pahakanan" name="bagianpaha"
+                                                                class="custom-control-input" value="kanan">
+                                                            <label class="custom-control-label"
+                                                                for="pahakanan">Kanan</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="pahakiri" name="bagianpaha"
+                                                                class="custom-control-input" value="kiri">
+                                                            <label class="custom-control-label"
+                                                                for="pahakiri">Kiri</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa sering pada paha?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakpaha" name="seringpaha"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakpaha">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadangpaha" name="seringpaha"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadangpaha">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringpaha" name="seringpaha"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringpaha">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalupaha" name="seringpaha"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalupaha">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada paha?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadapaha" name="paha"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakadapaha">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamanpaha" name="paha"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamanpaha">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitpaha" name="paha" value="sakit"
+                                                                class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitpaha">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahpaha" name="paha"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitparahpaha">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="output10" style="display: none;">
+                                                        <h5 class="mt-5">Lutut</h5>
+                                                        <hr>
+                                                        <h6>Bagian</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="lututkanan" name="bagianlutut"
+                                                                class="custom-control-input" value="kanan">
+                                                            <label class="custom-control-label"
+                                                                for="lututkanan">Kanan</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="lututkiri" name="bagianlutut"
+                                                                class="custom-control-input" value="kiri">
+                                                            <label class="custom-control-label"
+                                                                for="lututkiri">Kiri</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa sering pada lutut?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaklutut" name="seringlutut"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidaklutut">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadanglutut" name="seringlutut"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadanglutut">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringlutut" name="seringlutut"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringlutut">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalulutut" name="seringlutut"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalulutut">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada lutut?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadalutut" name="lutut"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidakadalutut">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamanlutut" name="lutut"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamanlutut">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitlutut" name="lutut"
+                                                                value="sakit" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitlutut">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahlutut" name="lutut"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitparahlutut">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="output11" style="display: none;">
+                                                        <h5 class="mt-5">Betis</h5>
+                                                        <hr>
+                                                        <h6>Bagian</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="betiskanan" name="bagianbetis"
+                                                                class="custom-control-input" value="kanan">
+                                                            <label class="custom-control-label"
+                                                                for="betiskanan">Kanan</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="betiskiri" name="bagianbetis"
+                                                                class="custom-control-input" value="kiri">
+                                                            <label class="custom-control-label"
+                                                                for="betiskiri">Kiri</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa sering pada betis?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakbetis" name="seringbetis"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakbetis">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadangbetis" name="seringbetis"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadangbetis">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringbetis" name="seringbetis"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringbetis">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalubetis" name="seringbetis"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalubetis">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada betis?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadabetis" name="betis"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidakadabetis">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamanbetis" name="betis"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamanbetis">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitbetis" name="betis"
+                                                                value="sakit" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitbetis">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahbetis" name="betis"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitparahbetis">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div id="output12" style="display: none;">
+                                                        <h5 class="mt-5">Kaki</h5>
+                                                        <hr>
+                                                        <h6>Bagian</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kakikanan" name="bagiankaki"
+                                                                class="custom-control-input" value="kanan">
+                                                            <label class="custom-control-label"
+                                                                for="kakikanan">Kanan</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kakikiri" name="bagiankaki"
+                                                                class="custom-control-input" value="kiri">
+                                                            <label class="custom-control-label"
+                                                                for="kakikiri">Kiri</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa sering pada kaki?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakkaki" name="seringkaki"
+                                                                value="tidak pernah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakkaki">Tidak
+                                                                pernah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kadangkaki" name="seringkaki"
+                                                                value="terkadang" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="kadangkaki">Kadang-kadang</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="seringkaki" name="seringkaki"
+                                                                value="sering" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="seringkaki">Sering</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="selalukaki" name="seringkaki"
+                                                                value="selalu" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="selalukaki">Selalu</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <h6>Seberapa parah pada kaki?</h6>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidakadakaki" name="kaki"
+                                                                value="tidak ada masalah" class="custom-control-input">
+                                                            <label class="custom-control-label" for="tidakadakaki">Tidak
+                                                                ada
+                                                                masalah</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tidaknyamankaki" name="kaki"
+                                                                value="tidak nyaman" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="tidaknyamankaki">Tidak
+                                                                nyaman</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitkaki" name="kaki" value="sakit"
+                                                                class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitkaki">Sakit</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sakitparahkaki" name="kaki"
+                                                                value="sakit parah" class="custom-control-input">
+                                                            <label class="custom-control-label"
+                                                                for="sakitparahkaki">Sakit
+                                                                parah</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
                                         </div>
-
-
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
-                                <!-- Input group -->
-
-
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
                             </div>
+                            <!-- Input group -->
+
+
                         </div>
-                        <!-- [ Main Content ] end -->
                     </div>
+                    <!-- [ Main Content ] end -->
                 </div>
             </div>
         </div>
-
     </div>
+
+</div>
 </div>
 <!-- [ Main Content ] end -->
 
@@ -457,6 +1208,137 @@
         var checkBox = document.getElementById("bahu");
         // Get the output text
         var text = document.getElementById("output2");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+
+    function bagian3() {
+        // Get the checkbox
+        var checkBox = document.getElementById("pa");
+        // Get the output text
+        var text = document.getElementById("output3");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    function bagian4() {
+        // Get the checkbox
+        var checkBox = document.getElementById("siku");
+        // Get the output text
+        var text = document.getElementById("output4");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    function bagian5() {
+        // Get the checkbox
+        var checkBox = document.getElementById("pb");
+        // Get the output text
+        var text = document.getElementById("output5");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    function bagian6() {
+        // Get the checkbox
+        var checkBox = document.getElementById("lengan");
+        // Get the output text
+        var text = document.getElementById("output6");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    function bagian7() {
+        // Get the checkbox
+        var checkBox = document.getElementById("tangan");
+        // Get the output text
+        var text = document.getElementById("output7");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    function bagian8() {
+        // Get the checkbox
+        var checkBox = document.getElementById("pinggul");
+        // Get the output text
+        var text = document.getElementById("output8");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    function bagian9() {
+        // Get the checkbox
+        var checkBox = document.getElementById("paha");
+        // Get the output text
+        var text = document.getElementById("output9");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    function bagian10() {
+        // Get the checkbox
+        var checkBox = document.getElementById("lutut");
+        // Get the output text
+        var text = document.getElementById("output10");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    function bagian11() {
+        // Get the checkbox
+        var checkBox = document.getElementById("betis");
+        // Get the output text
+        var text = document.getElementById("output11");
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    function bagian12() {
+        // Get the checkbox
+        var checkBox = document.getElementById("kaki");
+        // Get the output text
+        var text = document.getElementById("output12");
 
         // If the checkbox is checked, display the output text
         if (checkBox.checked == true) {

@@ -1,0 +1,190 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Hasil GOTRAK {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10"></h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#!">Hasil GOTRAK</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+
+
+                            <!-- [ Hover-table ] start -->
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    {% for message in get_flashed_messages() %}
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="card-header">
+                                        <h5>Hasil Penilaian Potensi Bahaya Ergonomi Perkantoran</h5>
+
+                                    </div>
+                                    <div class="card-block table-border-style">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Nomor Laporan</td>
+                                                        <td>{{ gotrak.id }}</td>
+                                                    </tr>
+                                                    {% if gotrak.perusahaan %}
+                                                    <tr>
+                                                        <td>Perusahaan</td>
+                                                        <td>{{ gotrak.perusahaan }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    <tr>
+                                                        <td>Tanggal</td>
+                                                        <td>{{ gotrak.tanggal }}</td>
+                                                    </tr>
+                                                    {% if gotrak.nama %}
+                                                    <tr>
+                                                        <td>Nama</td>
+                                                        <td>{{ gotrak.nama }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.posisi %}
+                                                    <tr>
+                                                        <td>Posisi</td>
+                                                        <td>{{ gotrak.posisi }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.email %}
+                                                    <tr>
+                                                        <td>Email</td>
+                                                        <td>{{ gotrak.email }}</td>
+                                                    </tr>
+                                                    {% endif %}
+
+
+                                                    {% if gotrak.tugas1 %}
+                                                    <tr>
+                                                        <td>Tugas 1</td>
+                                                        <td>{{ gotrak.tugas1 }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.waktu1 %}
+                                                    <tr>
+                                                        <td>Waktu 1</td>
+                                                        <td>{{ gotrak.waktu1 }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.tugas2 %}
+                                                    <tr>
+                                                        <td>Tugas 2</td>
+                                                        <td>{{ gotrak.tugas2 }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.waktu2 %}
+                                                    <tr>
+                                                        <td>Waktu 2</td>
+                                                        <td>{{ gotrak.waktu2 }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.tugas3 %}
+                                                    <tr>
+                                                        <td>Tugas 3</td>
+                                                        <td>{{ gotrak.tugas3 }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.waktu3 %}
+                                                    <tr>
+                                                        <td>Waktu 3</td>
+                                                        <td>{{ gotrak.waktu3 }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.tgn %}
+                                                    <tr>
+                                                        <td>Tangan</td>
+                                                        <td>{{ gotrak.tgn }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.lama %}
+                                                    <tr>
+                                                        <td>Lama bekerja</td>
+                                                        <td>{{ gotrak.lama }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.mental %}
+                                                    <tr>
+                                                        <td>Kelelahan mental</td>
+                                                        <td>{{ gotrak.mental }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.fisik %}
+                                                    <tr>
+                                                        <td>Kelelahan fisik</td>
+                                                        <td>{{ gotrak.fisik }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.sakit %}
+                                                    <tr>
+                                                        <td>Rasa sakit berhubungan dengan pekerjaan</td>
+                                                        <td>{{ gotrak.sakit }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.bagian %}
+                                                    <tr>
+                                                        <td>Bagian yang sakit</td>
+                                                        <td>{{ gotrak.bagian }}</td>
+                                                    </tr>
+                                                    {% endif %}
+
+
+                                                </tbody>
+                                            </table>
+                                            <hr>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- [ Hover-table ] end -->
+
+                        </div>
+                        <!-- [ Main Content ] end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
