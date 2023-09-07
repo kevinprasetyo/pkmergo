@@ -4,25 +4,7 @@
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}
-<style>
-    .bodyParts {
-        border-color: black;
-        fill: #72B8FC;
-        cursor: pointer;
-    }
 
-    area.bodyParts {
-        fill: black;
-        stroke: gray;
-        /* Replace with none if you like*/
-        stroke-width: 4;
-        cursor: pointer;
-    }
-
-    area.bodyParts:hover {
-        stroke: black;
-    }
-</style>
 
 {% endblock stylesheets %}
 
@@ -240,11 +222,24 @@
 
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <h5 class="mt-5">Klik pada bagian tubuh yang sakit</h5>
+                                                <h5 class="mt-5">Gambar bantuan</h5>
                                                 <hr>
-                                                <img src="{{ config.ASSETS_ROOT }}/images/fix.jpg">
+                                                <img src="{{ config.ASSETS_ROOT }}/images/fix.jpg" class="img-fluid"
+                                                    alt="gotrak">
                                             </div>
                                             <div class="col-md-6">
+
+                                                <h5 class="mt-5">Pilih bagian tubuh yang sakit</h5>
+                                                <hr>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="kanan">
+                                                    <label class="custom-control-label" for="kanan">Kanan</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="kiri">
+                                                    <label class="custom-control-label" for="kiri">Kiri</label>
+                                                </div>`
+
 
                                                 <h5 class="mt-5">Seberapa sering pada Leher?</h5>
                                                 <hr>
@@ -403,9 +398,4 @@
         }
     }
 </script>
-
-
-<script src="{{ config.ASSETS_ROOT }}/js/pages/jquery.min.js"></script>
-<script src="{{ config.ASSETS_ROOT }}/js/pages/jquery.imagemapster.min.js"></script>
-<script src="{{ config.ASSETS_ROOT }}/js/pages/index.js"></script>
 {% endblock javascripts %}
