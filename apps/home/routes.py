@@ -163,11 +163,13 @@ def lihat():
             SKORLEHER = 12
         elif seringleher == "selalu" and leher == "sakit parah":
             SKORLEHER = 16
+        elif seringleher == "sering":
+            SKORLEHER = 99
         else:
             SKORLEHER = 0
 
         gotrak = Hasil(perusahaan=perusahaan, nama=nama, posisi=posisi, email=email, tugas1=tugas1, tugas2=tugas2, tugas3=tugas3,
-                       waktu1=waktu1, waktu2=waktu2, waktu3=waktu3, tgn=tgn, lama=lama, mental=mental, fisik=fisik, sakit=sakit, bagian=bagian, skorleher=SKORLEHER)
+                       waktu1=waktu1, waktu2=waktu2, waktu3=waktu3, tgn=tgn, lama=lama, mental=mental, fisik=fisik, sakit=sakit, bagian=bagian, seringleher=seringleher, leher=leher, skorleher=SKORLEHER)
         db.session.add(gotrak)
         db.session.commit()
         flash("Berhasil tersimpan")
