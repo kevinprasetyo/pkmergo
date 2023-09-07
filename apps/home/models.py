@@ -30,3 +30,4 @@ class Hasil(db.Model):
     fisik = db.Column(db.Text, nullable=True)
     sakit = db.Column(db.Text, nullable=True)
     bagian = db.Column(db.Text, nullable=True)
+    skorleher = db.Column(db.Text, nullable=True)

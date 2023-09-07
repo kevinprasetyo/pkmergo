@@ -83,6 +83,7 @@
 
                                             </div>
                                             <h5 class="mt-5">Tugas dan Waktu</h5>
+                                            <h6>Yang dilakukan selama satu hari kerja</h6>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -95,7 +96,7 @@
                                                         id="tugas3" placeholder="Tugas 3">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label>Waktu</label>
+                                                    <label>Waktu (dalam jam)</label>
                                                     <input class="mb-3 form-control" type="number" name="waktu1"
                                                         id="waktu1" placeholder="Waktu 1">
                                                     <input class="mb-3 form-control" type="number" name="waktu2"
@@ -252,66 +253,70 @@
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="leher"
                                                             name="pilih1" value="leher" onclick="bagian1()">
-                                                        <label class="custom-control-label" for="leher">Leher</label>
+                                                        <label class="custom-control-label" for="leher">1. Leher</label>
                                                     </div>
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="bahu"
                                                             name="pilih2" value="bahu" onclick="bagian2()">
-                                                        <label class="custom-control-label" for="bahu">Bahu</label>
+                                                        <label class="custom-control-label" for="bahu">2. Bahu</label>
                                                     </div>
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="pa"
                                                             name="pilih3" value="punggung atas" onclick="bagian3()">
-                                                        <label class="custom-control-label" for="pa">Punggung
+                                                        <label class="custom-control-label" for="pa">3. Punggung
                                                             Atas</label>
                                                     </div>
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="siku"
                                                             name="pilih4" value="siku" onclick="bagian4()">
-                                                        <label class="custom-control-label" for="siku">Siku</label>
+                                                        <label class="custom-control-label" for="siku">4. Siku</label>
                                                     </div>
 
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="pb"
                                                             name="pilih5" value="punggung bawah" onclick="bagian5()">
-                                                        <label class="custom-control-label" for="pb">Punggung
+                                                        <label class="custom-control-label" for="pb">5. Punggung
                                                             Bawah</label>
                                                     </div>
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="lengan"
                                                             name="pilih6" value="lengan" onclick="bagian6()">
-                                                        <label class="custom-control-label" for="lengan">Lengan</label>
+                                                        <label class="custom-control-label" for="lengan">6.
+                                                            Lengan</label>
                                                     </div>
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="tangan"
                                                             name="pilih7" value="tangan" onclick="bagian7()">
-                                                        <label class="custom-control-label" for="tangan">Tangan</label>
+                                                        <label class="custom-control-label" for="tangan">7.
+                                                            Tangan</label>
                                                     </div>
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="pinggul"
                                                             name="pilih8" value="pinggul" onclick="bagian8()">
-                                                        <label class="custom-control-label"
-                                                            for="pinggul">Pinggul</label>
+                                                        <label class="custom-control-label" for="pinggul">8.
+                                                            Pinggul</label>
                                                     </div>
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="paha"
                                                             name="pilih9" value="paha" onclick="bagian9()">
-                                                        <label class="custom-control-label" for="paha">Paha</label>
+                                                        <label class="custom-control-label" for="paha">9. Paha</label>
                                                     </div>
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="lutut"
                                                             name="pilih10" value="lutut" onclick="bagian10()">
-                                                        <label class="custom-control-label" for="lutut">Lutut</label>
+                                                        <label class="custom-control-label" for="lutut">10.
+                                                            Lutut</label>
                                                     </div>
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="betis"
                                                             name="pilih11" value="betis" onclick="bagian11()">
-                                                        <label class="custom-control-label" for="betis">Betis</label>
+                                                        <label class="custom-control-label" for="betis">11.
+                                                            Betis</label>
                                                     </div>
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input" id="kaki"
                                                             name="pilih12" value="kaki" onclick="bagian12()">
-                                                        <label class="custom-control-label" for="kaki">Kaki</label>
+                                                        <label class="custom-control-label" for="kaki">12. Kaki</label>
                                                     </div>
 
                                                     <div id="output1" style="display: none;">
@@ -389,6 +394,12 @@
                                                                 class="custom-control-input" value="kiri">
                                                             <label class="custom-control-label"
                                                                 for="bahukiri">Kiri</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="bahukeduanya" name="bagianbahu"
+                                                                class="custom-control-input" value="keduanya">
+                                                            <label class="custom-control-label"
+                                                                for="bahukeduanya">Keduanya</label>
                                                         </div>
                                                         <br><br>
                                                         <h6>Seberapa sering pada bahu?</h6>
@@ -521,6 +532,12 @@
                                                                 class="custom-control-input" value="kiri">
                                                             <label class="custom-control-label"
                                                                 for="sikukiri">Kiri</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="sikukeduanya" name="bagiansiku"
+                                                                class="custom-control-input" value="keduanya">
+                                                            <label class="custom-control-label"
+                                                                for="sikukeduanya">Keduanya</label>
                                                         </div>
                                                         <br><br>
                                                         <h6>Seberapa sering pada siku?</h6>
@@ -655,6 +672,12 @@
                                                             <label class="custom-control-label"
                                                                 for="lengankiri">Kiri</label>
                                                         </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="lengankeduanya" name="bagianlengan"
+                                                                class="custom-control-input" value="keduanya">
+                                                            <label class="custom-control-label"
+                                                                for="lengankeduanya">Keduanya</label>
+                                                        </div>
                                                         <br><br>
                                                         <h6>Seberapa sering pada lengan?</h6>
                                                         <div class="custom-control custom-radio custom-control-inline">
@@ -729,6 +752,12 @@
                                                                 class="custom-control-input" value="kiri">
                                                             <label class="custom-control-label"
                                                                 for="tangankiri">Kiri</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="tangankeduanya" name="bagiantangan"
+                                                                class="custom-control-input" value="keduanya">
+                                                            <label class="custom-control-label"
+                                                                for="tangankeduanya">Keduanya</label>
                                                         </div>
                                                         <br><br>
                                                         <h6>Seberapa sering pada tangan?</h6>
@@ -805,6 +834,13 @@
                                                             <label class="custom-control-label"
                                                                 for="pinggulkiri">Kiri</label>
                                                         </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="pinggulkeduanya"
+                                                                name="bagianpinggul" class="custom-control-input"
+                                                                value="keduanya">
+                                                            <label class="custom-control-label"
+                                                                for="pinggulkeduanya">Keduanya</label>
+                                                        </div>
                                                         <br><br>
                                                         <h6>Seberapa sering pada pinggul?</h6>
                                                         <div class="custom-control custom-radio custom-control-inline">
@@ -880,6 +916,12 @@
                                                             <label class="custom-control-label"
                                                                 for="pahakiri">Kiri</label>
                                                         </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="pahakeduanya" name="bagianpaha"
+                                                                class="custom-control-input" value="keduanya">
+                                                            <label class="custom-control-label"
+                                                                for="pahakeduanya">Keduanya</label>
+                                                        </div>
                                                         <br><br>
                                                         <h6>Seberapa sering pada paha?</h6>
                                                         <div class="custom-control custom-radio custom-control-inline">
@@ -953,6 +995,12 @@
                                                                 class="custom-control-input" value="kiri">
                                                             <label class="custom-control-label"
                                                                 for="lututkiri">Kiri</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="lututkeduanya" name="bagianlutut"
+                                                                class="custom-control-input" value="keduanya">
+                                                            <label class="custom-control-label"
+                                                                for="lututkeduanya">Keduanya</label>
                                                         </div>
                                                         <br><br>
                                                         <h6>Seberapa sering pada lutut?</h6>
@@ -1029,6 +1077,12 @@
                                                             <label class="custom-control-label"
                                                                 for="betiskiri">Kiri</label>
                                                         </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="betiskeduanya" name="bagianbetis"
+                                                                class="custom-control-input" value="keduanya">
+                                                            <label class="custom-control-label"
+                                                                for="betiskeduanya">Keduanya</label>
+                                                        </div>
                                                         <br><br>
                                                         <h6>Seberapa sering pada betis?</h6>
                                                         <div class="custom-control custom-radio custom-control-inline">
@@ -1103,6 +1157,12 @@
                                                                 class="custom-control-input" value="kiri">
                                                             <label class="custom-control-label"
                                                                 for="kakikiri">Kiri</label>
+                                                        </div>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                            <input type="radio" id="kakikeduanya" name="bagiankaki"
+                                                                class="custom-control-input" value="keduanya">
+                                                            <label class="custom-control-label"
+                                                                for="kakikeduanya">Keduanya</label>
                                                         </div>
                                                         <br><br>
                                                         <h6>Seberapa sering pada kaki?</h6>

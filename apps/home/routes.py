@@ -131,8 +131,43 @@ def lihat():
         seringkaki = request.form.get('seringkaki')
         kaki = request.form.get('kaki')
 
+        if seringleher == "tidak pernah" and leher == "tidak ada masalah":
+            SKORLEHER = 1
+        elif seringleher == "tidak pernah" and leher == "tidak nyaman":
+            SKORLEHER = 2
+        elif seringleher == "tidak pernah" and leher == "sakit":
+            SKORLEHER = 3
+        elif seringleher == "tidak pernah" and leher == "sakit parah":
+            SKORLEHER = 4
+        if seringleher == "terkadang" and leher == "tidak ada masalah":
+            SKORLEHER = 2
+        elif seringleher == "terkadang" and leher == "tidak nyaman":
+            SKORLEHER = 4
+        elif seringleher == "terkadang" and leher == "sakit":
+            SKORLEHER = 6
+        elif seringleher == "terkadang" and leher == "sakit parah":
+            SKORLEHER = 8
+        if seringleher == "sering" and leher == "tidak ada masalah":
+            SKORLEHER = 3
+        elif seringleher == "sering" and leher == "tidak nyaman":
+            SKORLEHER = 6
+        elif seringleher == "sering" and leher == "sakit":
+            SKORLEHER = 9
+        elif seringleher == "sering" and leher == "sakit parah":
+            SKORLEHER = 12
+        if seringleher == "selalu" and leher == "tidak ada masalah":
+            SKORLEHER = 4
+        elif seringleher == "selalu" and leher == "tidak nyaman":
+            SKORLEHER = 8
+        elif seringleher == "selalu" and leher == "sakit":
+            SKORLEHER = 12
+        elif seringleher == "selalu" and leher == "sakit parah":
+            SKORLEHER = 16
+        else:
+            SKORLEHER = 0
+
         gotrak = Hasil(perusahaan=perusahaan, nama=nama, posisi=posisi, email=email, tugas1=tugas1, tugas2=tugas2, tugas3=tugas3,
-                       waktu1=waktu1, waktu2=waktu2, waktu3=waktu3, tgn=tgn, lama=lama, mental=mental, fisik=fisik, sakit=sakit, bagian=bagian)
+                       waktu1=waktu1, waktu2=waktu2, waktu3=waktu3, tgn=tgn, lama=lama, mental=mental, fisik=fisik, sakit=sakit, bagian=bagian, skorleher=SKORLEHER)
         db.session.add(gotrak)
         db.session.commit()
         flash("Berhasil tersimpan")
