@@ -54,3 +54,11 @@ class Hasil(db.Model):
     nilaibetis = db.Column(db.Text, nullable=True)
     skorkaki = db.Column(db.Text, nullable=True)
     nilaikaki = db.Column(db.Text, nullable=True)
+
+
+class Janji(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nama = db.Column(db.Text, nullable=True)
+    email = db.Column(db.Text, nullable=False)
+    hp = db.Column(db.Text, nullable=True)
+    tgl = db.Column(db.Text, nullable=True)

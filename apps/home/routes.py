@@ -7,7 +7,7 @@ from apps.home import blueprint
 from flask import render_template, request, flash, redirect
 from flask_login import login_required, current_user
 from jinja2 import TemplateNotFound
-from apps.home.models import Profile, Hasil
+from apps.home.models import Profile, Hasil, Janji
 from apps import db
 
 
@@ -681,6 +681,55 @@ def hasil():
 def hasildari(email):
     gotrak = Hasil.query.filter_by(email=email).all()
     return render_template('home/hasil.html', segment='hasil', gotrak=gotrak)
+
+
+@blueprint.route('/janji', methods=['GET', 'POST'])
+@login_required
+def janji():
+    if request.method == 'POST':
+        nama = request.form.get('nama')
+        email = request.form.get('email')
+        hp = request.form.get('hp')
+        tgl = request.form.get('tgl')
+
+        janji = Janji(nama=nama, email=email, hp=hp, tgl=tgl)
+        db.session.add(janji)
+        db.session.commit()
+        flash("Berhasil tersimpan. Akan dihubungi dalam waktu 24 jam")
+
+        return render_template('home/janji.html', segment='janji', janji=janji)
+    return render_template('home/konsultasi.html', segment='konsultasi')
+
+
+@blueprint.route('/jadwal', methods=['GET', 'POST'])
+def jadwal():
+    if "email" in request.args:
+        email = request.args.get("email")
+        list = Janji.query.filter_by(email=email).all()
+    elif "hapus" in request.args:
+        hapus = request.args.get("hapus")
+        hapus_konsultasi = Janji.query.filter_by(id=hapus).one()
+        email = hapus_konsultasi.email
+        db.session.delete(hapus_konsultasi)
+        db.session.commit()
+        flash("Berhasil dihapus")
+        return redirect(f'/jadwal?email={email}')
+    else:
+        list = Janji.query.all()
+    return render_template('home/jadwal.html', segment='jadwal', janji=list)
+
+
+@blueprint.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    edit = Janji.query.filter_by(id=id).one()
+    if request.method == 'POST':
+        edit.nama = request.form.get('nama')
+        edit.hp = request.form.get('hp')
+        edit.tgl = request.form.get('tgl')
+        db.session.commit()
+        flash("Berhasil diubah")
+        return redirect(f'/jadwal?email={edit.email}')
+    return render_template('home/edit_konsultasi.html', segment='edit_konsultasi', edit=edit)
 
 
 @blueprint.route('/<template>')
