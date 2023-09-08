@@ -155,24 +155,117 @@
                                                         <td>{{ gotrak.sakit }}</td>
                                                     </tr>
                                                     {% endif %}
+
                                                     {% if gotrak.bagian %}
+
                                                     <tr>
                                                         <td>Bagian yang sakit</td>
                                                         <td>{{ gotrak.bagian }}</td>
                                                     </tr>
                                                     {% endif %}
+                                                </tbody>
+                                                <hr>
+                                            </table>
+                                            <hr>
+                                            {% if gotrak.bagian %}
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Bagian Tubuh</th>
+                                                        <th>Skor</th>
+                                                        <th>Kesimpulan</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
                                                     {% if gotrak.skorleher %}
                                                     <tr>
-                                                        <td>Skor leher</td>
+                                                        <td>Leher</td>
                                                         <td>{{ gotrak.skorleher }}</td>
+                                                        <td>{{ gotrak.nilaileher }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skorbahu %}
+                                                    <tr>
+                                                        <td>Bahu</td>
+                                                        <td>{{ gotrak.skorbahu }}</td>
+                                                        <td>{{ gotrak.nilaibahu }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skorpa %}
+                                                    <tr>
+                                                        <td>Punggung atas</td>
+                                                        <td>{{ gotrak.skorpa }}</td>
+                                                        <td>{{ gotrak.nilaipa }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skorsiku %}
+                                                    <tr>
+                                                        <td>Siku</td>
+                                                        <td>{{ gotrak.skorsiku }}</td>
+                                                        <td>{{ gotrak.nilaisiku }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skorpb %}
+                                                    <tr>
+                                                        <td>Punggung bawah</td>
+                                                        <td>{{ gotrak.skorpb }}</td>
+                                                        <td>{{ gotrak.nilaipb }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skorlengan %}
+                                                    <tr>
+                                                        <td>Lengan</td>
+                                                        <td>{{ gotrak.skorlengan }}</td>
+                                                        <td>{{ gotrak.nilailengan }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skortangan %}
+                                                    <tr>
+                                                        <td>Tangan</td>
+                                                        <td>{{ gotrak.skortangan }}</td>
+                                                        <td>{{ gotrak.nilaitangan }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skorpinggul %}
+                                                    <tr>
+                                                        <td>Pinggul</td>
+                                                        <td>{{ gotrak.skorpinggul }}</td>
+                                                        <td>{{ gotrak.nilaipinggul }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skorpaha %}
+                                                    <tr>
+                                                        <td>Paha</td>
+                                                        <td>{{ gotrak.skorpaha }}</td>
+                                                        <td>{{ gotrak.nilaipaha }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skorlutut %}
+                                                    <tr>
+                                                        <td>Lutut</td>
+                                                        <td>{{ gotrak.skorlutut }}</td>
+                                                        <td>{{ gotrak.nilailutut }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skorbetis %}
+                                                    <tr>
+                                                        <td>Betis</td>
+                                                        <td>{{ gotrak.skorbetis }}</td>
+                                                        <td>{{ gotrak.nilaibetis }}</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if gotrak.skorkaki %}
+                                                    <tr>
+                                                        <td>Kaki</td>
+                                                        <td>{{ gotrak.skorkaki }}</td>
+                                                        <td>{{ gotrak.nilaikaki }}</td>
                                                     </tr>
                                                     {% endif %}
 
-
                                                 </tbody>
-                                            </table>
-                                            <hr>
 
+                                            </table>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
