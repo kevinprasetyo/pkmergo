@@ -169,7 +169,7 @@ def lihat():
 
         if skorleher < 2:
             nilaileher = "aman"
-        elif skorleher < 6:
+        elif skorleher < 7:
             nilaileher = "perlu pengamatan lebih lanjut"
         else:
             nilaileher = "bahaya"
@@ -212,7 +212,7 @@ def lihat():
 
         if skorbahu < 2:
             nilaibahu = "aman"
-        elif skorbahu < 6:
+        elif skorbahu < 7:
             nilaibahu = "perlu pengamatan lebih lanjut"
         else:
             nilaibahu = "bahaya"
@@ -255,7 +255,7 @@ def lihat():
 
         if skorpa < 2:
             nilaipa = "aman"
-        elif skorpa < 6:
+        elif skorpa < 7:
             nilaipa = "perlu pengamatan lebih lanjut"
         else:
             nilaipa = "bahaya"
@@ -298,7 +298,7 @@ def lihat():
 
         if skorsiku < 2:
             nilaisiku = "aman"
-        elif skorsiku < 6:
+        elif skorsiku < 7:
             nilaisiku = "perlu pengamatan lebih lanjut"
         else:
             nilaisiku = "bahaya"
@@ -341,7 +341,7 @@ def lihat():
 
         if skorpb < 2:
             nilaipb = "aman"
-        elif skorpb < 6:
+        elif skorpb < 7:
             nilaipb = "perlu pengamatan lebih lanjut"
         else:
             nilaipb = "bahaya"
@@ -384,7 +384,7 @@ def lihat():
 
         if skorlengan < 2:
             nilailengan = "aman"
-        elif skorlengan < 6:
+        elif skorlengan < 7:
             nilailengan = "perlu pengamatan lebih lanjut"
         else:
             nilailengan = "bahaya"
@@ -427,7 +427,7 @@ def lihat():
 
         if skortangan < 2:
             nilaitangan = "aman"
-        elif skortangan < 6:
+        elif skortangan < 7:
             nilaitangan = "perlu pengamatan lebih lanjut"
         else:
             nilaitangan = "bahaya"
@@ -470,7 +470,7 @@ def lihat():
 
         if skorpinggul < 2:
             nilaipinggul = "aman"
-        elif skorpinggul < 6:
+        elif skorpinggul < 7:
             nilaipinggul = "perlu pengamatan lebih lanjut"
         else:
             nilaipinggul = "bahaya"
@@ -513,7 +513,7 @@ def lihat():
 
         if skorpaha < 2:
             nilaipaha = "aman"
-        elif skorpaha < 6:
+        elif skorpaha < 7:
             nilaipaha = "perlu pengamatan lebih lanjut"
         else:
             nilaipaha = "bahaya"
@@ -556,7 +556,7 @@ def lihat():
 
         if skorlutut < 2:
             nilailutut = "aman"
-        elif skorlutut < 6:
+        elif skorlutut < 7:
             nilailutut = "perlu pengamatan lebih lanjut"
         else:
             nilailutut = "bahaya"
@@ -599,7 +599,7 @@ def lihat():
 
         if skorbetis < 2:
             nilaibetis = "aman"
-        elif skorbetis < 6:
+        elif skorbetis < 7:
             nilaibetis = "perlu pengamatan lebih lanjut"
         else:
             nilaibetis = "bahaya"
@@ -642,7 +642,7 @@ def lihat():
 
         if skorkaki < 2:
             nilaikaki = "aman"
-        elif skorkaki < 6:
+        elif skorkaki < 7:
             nilaikaki = "perlu pengamatan lebih lanjut"
         else:
             nilaikaki = "bahaya"
