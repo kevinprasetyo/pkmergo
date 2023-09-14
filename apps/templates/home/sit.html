@@ -17,68 +17,46 @@
         <div class="pcoded-content">
             <div class="pcoded-inner-content">
                 <!-- [ breadcrumb ] start -->
-                <div class="page-header">
-                    <div class="page-block">
-                        <div class="row align-items-center">
-                            <div class="col-md-12">
-                                <div class="page-header-title">
-                                    <h5 class="m-b-10"></h5>
-                                </div>
-                                <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="#!">Jadwal konsultasi</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <!-- [ breadcrumb ] end -->
-                <div class="main-body">
-                    <div class="page-wrapper">
-                        <!-- [ Main Content ] start -->
-                        <div class="row">
+                <!-- [ Main Content ] start -->
 
 
-                            <!-- [ Hover-table ] start -->
+                <!-- [ Hover-table ] start -->
 
-                            <div id="full-page-loader">
-                                <div class="lds-ellipsis">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                            <div id="warnings">
-                                <div id="warning-text">
-                                    <p>
-                                        This webapp needs camera to run. It will obviously need camera
-                                        permission as well.
-                                    </p>
-                                    <p>The tracker needs proper even lighting on your face to work.</p>
-                                    <p>Your webcam should be positioned just above your desktop.</p>
-                                    <button id="warning-button" onclick="start()">OK I
-                                        understand!</button>
-                                </div>
-                            </div>
-                            <canvas id="canvas" class="canvas" width="200" height="100"></canvas>
-                            <div id="message">
-                                <p>Screen Eye Distance: <span id="se_distance"></span></p>
-                                <p>Head UP/Down: <span id="x_rotate"></span></p>
-                                <p>Head Left/Right Turn: <span id="y_rotate"></span></p>
-                                <p>Head Left/Right Bend towards shoulder: <span id="z_rotate"></span>
-                                </p>
-                            </div>
-                            <!-- [ Hover-table ] end -->
-
-                        </div>
-                        <!-- [ Main Content ] end -->
+                <div id="full-page-loader">
+                    <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div id="warnings">
+                    <div id="warning-text">
+                        <p>
+                            This webapp needs camera to run. It will obviously need camera
+                            permission as well.
+                        </p>
+                        <p>The tracker needs proper even lighting on your face to work.</p>
+                        <p>Your webcam should be positioned just above your desktop.</p>
+                        <button id="warning-button" onclick="start()">OK I
+                            understand!</button>
+                    </div>
+                </div>
+                <canvas id="canvas" class="canvas" width="200" height="100"></canvas>
+                <div id="message">
+                    <p>Screen Eye Distance: <span id="se_distance"></span></p>
+                    <p>Head UP/Down: <span id="x_rotate"></span></p>
+                    <p>Head Left/Right Turn: <span id="y_rotate"></span></p>
+                    <p>Head Left/Right Bend towards shoulder: <span id="z_rotate"></span>
+                    </p>
+                </div>
+                <!-- [ Hover-table ] end -->
 
-    </div>
+            </div>
+
+        </div>
 </section>
 <!-- [ Main Content ] end -->
 
