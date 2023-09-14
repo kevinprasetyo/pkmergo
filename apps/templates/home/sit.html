@@ -34,24 +34,21 @@
                 </div>
                 <div id="warnings">
                     <div id="warning-text">
-                        <p>
-                            This webapp needs camera to run. It will obviously need camera
-                            permission as well.
-                        </p>
-                        <p>The tracker needs proper even lighting on your face to work.</p>
-                        <p>Your webcam should be positioned just above your desktop.</p>
-                        <button id="warning-button" onclick="start()">OK I
-                            understand!</button>
+
+                        <h5>Baca intruksi berikut dalam menjalankan fitur ini</h5>
+                        <ul style="list-style-type:disc">
+                            <li>Kamera atau Webcam berada di depan</li>
+                            <li>Pencahayaan yang memadai</li>
+                        </ul>
+
+                        <button class="btn btn-info" onclick="start()">Mulai</button>
                     </div>
                 </div>
                 <canvas id="canvas" class="canvas" width="200" height="100"></canvas>
                 <div id="message">
-                    <p>Screen Eye Distance: <span id="se_distance"></span></p>
-                    <p>Head UP/Down: <span id="x_rotate"></span></p>
-                    <p>Head Left/Right Turn: <span id="y_rotate"></span></p>
-                    <p>Head Left/Right Bend towards shoulder: <span id="z_rotate"></span>
-                    </p>
+
                 </div>
+
                 <!-- [ Hover-table ] end -->
 
             </div>

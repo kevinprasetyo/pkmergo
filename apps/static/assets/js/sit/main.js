@@ -64,16 +64,16 @@ function nextFrame() {
 			if (message) {
 				let messageContent = '';
 				if (!screenDistanceOK) {
-					messageContent += '<p>Too close to the screen.</p>';
+					messageContent += '<h2>Terlalu dekat dengan layar</h2>';
 				}
 				if (!isHeadPostureOk[0]) {
-					messageContent += '<p>Head is either too up or too down.</p>';
+					messageContent += '<h2>Kepala menekuk terlalu ke atas atau terlalu ke bawah</h2>';
 				}
 				if (!isHeadPostureOk[1]) {
-					messageContent += '<p>Head is turned too much.</p>';
+					messageContent += '<h2>Kepala terlalu memuntir</h2>';
 				}
 				if (!isHeadPostureOk[2]) {
-					messageContent += '<p>Head is bend towards sholders.</p>';
+					messageContent += '<h2>Kepala menekuk ke arah bahu.</h2>';
 				}
 				message.innerHTML = messageContent;
 			}
