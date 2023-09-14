@@ -40,53 +40,34 @@
 
 
                             <!-- [ Hover-table ] start -->
-                            <div class="col-xl-12">
-                                <div class="card">
-                                    {% for message in get_flashed_messages() %}
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        {{ message }}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    {% endfor %}
-                                    <div class="card-header">
-                                        <h5>Jadwal konsultasi</h5>
 
-                                    </div>
-                                    <div class="card-block table-border-style">
-                                        <div class="table-responsive">
-                                            <div id="full-page-loader">
-                                                <div class="lds-ellipsis">
-                                                    <div></div>
-                                                    <div></div>
-                                                    <div></div>
-                                                    <div></div>
-                                                </div>
-                                            </div>
-                                            <div id="warnings">
-                                                <div id="warning-text">
-                                                    <p>
-                                                        This webapp needs camera to run. It will obviously need camera
-                                                        permission as well.
-                                                    </p>
-                                                    <p>The tracker needs proper even lighting on your face to work.</p>
-                                                    <p>Your webcam should be positioned just above your desktop.</p>
-                                                    <button id="warning-button" onclick="start()">OK I
-                                                        understand!</button>
-                                                </div>
-                                            </div>
-                                            <canvas id="canvas" class="canvas" width="200" height="100"></canvas>
-                                            <div id="message">
-                                                <p>Screen Eye Distance: <span id="se_distance"></span></p>
-                                                <p>Head UP/Down: <span id="x_rotate"></span></p>
-                                                <p>Head Left/Right Turn: <span id="y_rotate"></span></p>
-                                                <p>Head Left/Right Bend towards shoulder: <span id="z_rotate"></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div id="full-page-loader">
+                                <div class="lds-ellipsis">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
                                 </div>
+                            </div>
+                            <div id="warnings">
+                                <div id="warning-text">
+                                    <p>
+                                        This webapp needs camera to run. It will obviously need camera
+                                        permission as well.
+                                    </p>
+                                    <p>The tracker needs proper even lighting on your face to work.</p>
+                                    <p>Your webcam should be positioned just above your desktop.</p>
+                                    <button id="warning-button" onclick="start()">OK I
+                                        understand!</button>
+                                </div>
+                            </div>
+                            <canvas id="canvas" class="canvas" width="200" height="100"></canvas>
+                            <div id="message">
+                                <p>Screen Eye Distance: <span id="se_distance"></span></p>
+                                <p>Head UP/Down: <span id="x_rotate"></span></p>
+                                <p>Head Left/Right Turn: <span id="y_rotate"></span></p>
+                                <p>Head Left/Right Bend towards shoulder: <span id="z_rotate"></span>
+                                </p>
                             </div>
                             <!-- [ Hover-table ] end -->
 
