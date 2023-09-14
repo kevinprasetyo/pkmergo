@@ -103,6 +103,9 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
+<script>
+    window.addEventListener("load", init);
+</script>
 <script src="{{ config.ASSETS_ROOT }}/js/sit/jeelizFaceTransfer.js"></script>
 <script src="{{ config.ASSETS_ROOT }}/js/sit/posture.js"></script>
 <script src="{{ config.ASSETS_ROOT }}/js/sit/audio.js"></script>
