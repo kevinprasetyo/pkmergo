@@ -1,56 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layouts/base.html" %}
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sit Straight</title>
-    <link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/sit/style.css">
-</head>
+{% block title %} Jadwal Konsultasi {% endblock %}
 
-<body onload="main()">
-    <div id="full-page-loader">
-        <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    <div id="warnings">
-        <div id="warning-text">
-            <p>
-                This webapp needs camera to run. It will obviously need camera
-                permission as well.
-            </p>
-            <p>The tracker needs proper even lighting on your face to work.</p>
-            <p>Your webcam should be positioned just above your desktop.</p>
-            <button id="warning-button" onclick="start()">OK I understand!</button>
-        </div>
-    </div>
-    <canvas id="canvas" class="canvas" width="200" height="100"></canvas>
-    <div id="message">
-        <p>Screen Eye Distance: <span id="se_distance"></span></p>
-        <p>Head UP/Down: <span id="x_rotate"></span></p>
-        <p>Head Left/Right Turn: <span id="y_rotate"></span></p>
-        <p>Head Left/Right Bend towards shoulder: <span id="z_rotate"></span></p>
-    </div>
-    <footer>
-        <div>
-            <a href="https://ko-fi.com/dinodroid">
-                <img src="https://ko-fi.com/img/Kofi_Logo_Blue.svg" height="30" /></a>
-        </div>
-        <div>
-            Made with <i style="color:red">&#9829;</i> by dinodroid using
-            <a href="https://jeeliz.com/">
-                <img src="https://jeeliz.com/wp-content/uploads/2018/01/LOGO_JEELIZ_BLUE.png" height="22" /></a>
-        </div>
-    </footer>
-    <script src="{{ config.ASSETS_ROOT }}/js/sit/jeelizFaceTransfer.js"></script>
-    <script src="{{ config.ASSETS_ROOT }}/js/sit/posture.js"></script>
-    <script src="{{ config.ASSETS_ROOT }}/js/sit/audio.js"></script>
-    <script src="{{ config.ASSETS_ROOT }}/js/sit/main.js"></script>
-</body>
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ config.ASSETS_ROOT }}/css/sit/style.css">
 
-</html>
+{% endblock stylesheets %}
+
+{% block content %}
+
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10"></h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#!">Jadwal konsultasi</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+
+
+                            <!-- [ Hover-table ] start -->
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    {% for message in get_flashed_messages() %}
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="card-header">
+                                        <h5>Jadwal konsultasi</h5>
+
+                                    </div>
+                                    <div class="card-block table-border-style">
+                                        <div class="table-responsive">
+                                            <div id="full-page-loader">
+                                                <div class="lds-ellipsis">
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
+                                            </div>
+                                            <div id="warnings">
+                                                <div id="warning-text">
+                                                    <p>
+                                                        This webapp needs camera to run. It will obviously need camera
+                                                        permission as well.
+                                                    </p>
+                                                    <p>The tracker needs proper even lighting on your face to work.</p>
+                                                    <p>Your webcam should be positioned just above your desktop.</p>
+                                                    <button id="warning-button" onclick="start()">OK I
+                                                        understand!</button>
+                                                </div>
+                                            </div>
+                                            <canvas id="canvas" class="canvas" width="200" height="100"></canvas>
+                                            <div id="message">
+                                                <p>Screen Eye Distance: <span id="se_distance"></span></p>
+                                                <p>Head UP/Down: <span id="x_rotate"></span></p>
+                                                <p>Head Left/Right Turn: <span id="y_rotate"></span></p>
+                                                <p>Head Left/Right Bend towards shoulder: <span id="z_rotate"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- [ Hover-table ] end -->
+
+                        </div>
+                        <!-- [ Main Content ] end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- [ Main Content ] end -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    window.onload = function () {
+        main();
+    }
+
+</script>
+<script src="{{ config.ASSETS_ROOT }}/js/sit/jeelizFaceTransfer.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/js/sit/posture.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/js/sit/audio.js"></script>
+<script src="{{ config.ASSETS_ROOT }}/js/sit/main.js"></script>
+
+{% endblock javascripts %}
