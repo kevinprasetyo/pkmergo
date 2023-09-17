@@ -10,27 +10,27 @@ import cv2
 def sit():
     return render_template('cv/sit.html', segment='sit')
 
-camera = cv2.VideoCapture(0)
+# camera = cv2.VideoCapture(0)
 
-def generate_frames():
-    while True:
-        success, frame = camera.read()
-        if not success:
-            break
-        else:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
+# def generate_frames():
+#     while True:
+#         success, frame = camera.read()
+#         if not success:
+#             break
+#         else:
+#             ret, buffer = cv2.imencode('.jpg', frame)
+#             frame = buffer.tobytes()
         
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+#         yield (b'--frame\r\n'
+#                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 @blueprint.route('/samping')
 def samping():
     return render_template('cv/samping.html', segment='samping')
 
-@blueprint.route('/video')
-def video():
-    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+# @blueprint.route('/video')
+# def video():
+#     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 # Errors
 @login_manager.unauthorized_handler
