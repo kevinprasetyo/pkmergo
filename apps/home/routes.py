@@ -15,7 +15,6 @@ def index():
 
 
 @blueprint.route('/profile', methods=['GET', 'POST'])
-@login_required
 def profile():
     try:
         if request.method == 'POST':
