@@ -3,6 +3,7 @@ from flask import render_template, request, flash, redirect, Response
 from flask_login import login_required, current_user
 from jinja2 import TemplateNotFound
 from apps import db, login_manager
+from apps.cv.models import Cv
 import cv2
 
 @blueprint.route('/sit')
@@ -24,10 +25,25 @@ def sit():
 #         yield (b'--frame\r\n'
 #                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-
 # @blueprint.route('/video')
 # def video():
 #     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@blueprint.route('/samping')
+def samping():
+    if "status" in request.args:
+        status = request.args.get('status')
+        kirim = Cv(status=status)
+        db.session.add(kirim)
+        db.session.commit()
+        return render_template('cv/samping.html', status=status)
+    else:
+        return render_template('cv/samping.html', segment='samping')
+
+@blueprint.route('/samping/laporan', methods=['GET', 'POST'])
+def laporan():
+    status = Cv.query.all()
+    return render_template('cv/laporan.html', status=status)
 
 # Errors
 @login_manager.unauthorized_handler
